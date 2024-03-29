@@ -20,6 +20,7 @@ Ini adalah penjelasan langkah demi langkah dari script PHP yang diberikan.
 
 <hr>
 
+```
 <?php
 
 /**
@@ -97,3 +98,5 @@ define('SU_PLUGIN_VERSION', '7.0.3');
 
 // Memasukkan file plugin.php jika su_fs() belum ada
 require_once dirname(__FILE__) . '/plugin.php';
+
+```
