@@ -1,4 +1,4 @@
-Langkah demi langkah penjelasan dari script PHP shortcodes-ultimate.php yang diberikan adalah sebagai berikut:
+Langkah demi langkah penjelasan dari script PHP [shortcodes-ultimate.php](shortcodes-ultimate) yang diberikan adalah sebagai berikut:
 
 1. **Komentar Header**: Bagian ini berisi informasi tentang plugin, seperti nama plugin, URI plugin, penulis, URI penulis, deskripsi plugin, domain teks, lisensi, versi plugin, dan informasi lainnya yang terkait dengan plugin.
 
