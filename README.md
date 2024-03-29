@@ -37,7 +37,7 @@ Ini adalah penjelasan langkah demi langkah dari script PHP yang diberikan.
  * Diuji hingga: 6.4
  */
 
-// 2. Memastikan script tidak dapat diakses secara langsung
+// 2. **Pengecekan ABSPATH **:  Memastikan script tidak dapat diakses secara langsung
 if (!defined('ABSPATH')) {
     exit;
 }
