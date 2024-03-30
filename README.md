@@ -1,4 +1,5 @@
-Langkah demi langkah penjelasan dari script PHP yang diberikan adalah sebagai berikut:
+
+Langkah demi langkah penjelasan dari script PHP [shortcodes-ultimate.php](shortcodes-ultimate/shortcodes-ultimate.php) yang diberikan adalah sebagai berikut:
 
 1. **Komentar Header**: Bagian ini berisi informasi tentang plugin, seperti nama plugin, URI plugin, penulis, URI penulis, deskripsi plugin, domain teks, lisensi, versi plugin, dan informasi lainnya yang terkait dengan plugin.
 
@@ -23,6 +24,8 @@ Ini adalah penjelasan langkah demi langkah dari script PHP yang diberikan.
 ```
 <?php
 
+// 1. **Komentar Header**:
+
 /**
  * Nama Plugin: Shortcodes Ultimate
  * URI Plugin: https://getshortcodes.com/
@@ -37,19 +40,23 @@ Ini adalah penjelasan langkah demi langkah dari script PHP yang diberikan.
  * Diuji hingga: 6.4
  */
 
-// Memastikan script tidak dapat diakses secara langsung
+
+// 2. **Pengecekan ABSPATH **:  Memastikan script tidak dapat diakses secara langsung
+
 if (!defined('ABSPATH')) {
     exit;
 }
 
-// Memeriksa apakah fungsi su_fs() sudah ada
+
+// 3. **Pengecekan Fungsi su_fs()**: Memeriksa apakah fungsi su_fs() sudah ada
 if (function_exists('su_fs')) {
-    // Menetapkan basename ke false jika su_fs() sudah ada
+    //  Menetapkan basename ke false jika su_fs() sudah ada
     su_fs()->set_basename(false, __FILE__);
 } else {
-    // Membuat fungsi bantuan su_fs() jika belum ada
+    //  4. **Definisi Fungsi su_fs()**: Membuat fungsi bantuan su_fs() jika belum ada
     if (!function_exists('su_fs')) {
-        // Fungsi bantuan untuk mengakses SDK dengan mudah
+        // 5. **Inisialisasi Freemius**: Fungsi bantuan untuk mengakses SDK dengan mudah
+
         function su_fs()
         {
             global $su_fs;
@@ -85,18 +92,22 @@ if (function_exists('su_fs')) {
             return $su_fs;
         }
 
-        // Memanggil fungsi su_fs() untuk menginisialisasi Freemius
+
+        // 5. **Inisialisasi Freemius**: Memanggil fungsi su_fs() untuk menginisialisasi Freemius
         su_fs();
-        // Memberi sinyal bahwa SDK telah diinisialisasi
+        // 6. **Sinyal bahwa SDK telah diinisialisasi**: Memberi sinyal bahwa SDK telah diinisialisasi
+
         do_action('su_fs_loaded');
     }
 }
 
-// Mendefinisikan konstanta SU_PLUGIN_FILE dan SU_PLUGIN_VERSION jika su_fs() belum ada
+
+// 7. **Definisi Konstanta SU_PLUGIN_FILE dan SU_PLUGIN_VERSION**: Mendefinisikan konstanta SU_PLUGIN_FILE dan SU_PLUGIN_VERSION jika su_fs() belum ada
 define('SU_PLUGIN_FILE', __FILE__);
 define('SU_PLUGIN_VERSION', '7.0.3');
 
-// Memasukkan file plugin.php jika su_fs() belum ada
+// 8. **Memasukkan File Plugin.php**: Memasukkan file plugin.php jika su_fs() belum ada  
+
 require_once dirname(__FILE__) . '/plugin.php';
 
 ```

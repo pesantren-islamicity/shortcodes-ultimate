@@ -1,4 +1,4 @@
-/*!
+/*! 
  * Flickity PACKAGED v2.2.1
  * Touch, responsive, flickable carousels
  *
