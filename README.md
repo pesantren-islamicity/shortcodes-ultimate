@@ -1,3 +1,4 @@
+**A comprehensive collection of visual components for WordPress**
 
 Langkah demi langkah penjelasan dari script PHP [shortcodes-ultimate.php](shortcodes-ultimate/shortcodes-ultimate.php) yang diberikan adalah sebagai berikut:
 
