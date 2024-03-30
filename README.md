@@ -112,3 +112,41 @@ define('SU_PLUGIN_VERSION', '7.0.3');
 require_once dirname(__FILE__) . '/plugin.php';
 
 ```
+<hr>
+
+Langkah demi langkah dari script PHP [plugin.php](shortcodes-ultimate/plugin.php) yang diberikan adalah sebagai berikut:
+
+1. **Pemanggilan `require_once`**: Script ini memanggil fungsi `require_once` untuk memuat dua file PHP yang diperlukan:
+   - `class-shortcodes-ultimate-activator.php`: File ini berisi kelas `Shortcodes_Ultimate_Activator` yang bertanggung jawab untuk menangani aktivasi plugin.
+   - `class-shortcodes-ultimate.php`: File ini berisi definisi kelas `Shortcodes_Ultimate` yang merupakan inti dari plugin Shortcodes Ultimate.
+
+2. **Pendaftaran `register_activation_hook`**: Script ini mendaftarkan fungsi `Shortcodes_Ultimate_Activator::activate` sebagai hook aktivasi plugin. Fungsi ini akan dieksekusi ketika plugin diaktifkan.
+
+3. **Panggilan `call_user_func`**: Script ini menggunakan fungsi `call_user_func` untuk membuat pemanggilan anonim fungsi. Di dalamnya, terdapat kondisi untuk memastikan bahwa plugin tidak berjalan selama proses aktivasi. Jika aksi 'plugins_loaded' sudah dilakukan, artinya plugin sudah terinisialisasi, dan proses berhenti. Jika belum, maka objek `Shortcodes_Ultimate` akan dibuat dengan parameter yang diberikan: `SU_PLUGIN_FILE`, `SU_PLUGIN_VERSION`, dan awalan string 'shortcodes-ultimate-'.
+
+4. **Inisialisasi Plugin**: Objek `Shortcodes_Ultimate` dibuat dengan menggunakan kelas yang telah didefinisikan sebelumnya. Objek ini diinisialisasi dengan parameter `SU_PLUGIN_FILE`, `SU_PLUGIN_VERSION`, dan awalan string 'shortcodes-ultimate-'.
+
+5. **Pemanggilan Hook 'su/ready'**: Setelah objek plugin dibuat, script memanggil hook 'su/ready' dengan menyertakan objek plugin sebagai argumen. Ini memungkinkan hook tersebut untuk mengeksekusi aksi tertentu setelah plugin siap digunakan.
+
+Ini adalah penjelasan langkah demi langkah dari script PHP [plugin.php](shortcodes-ultimate/plugin.php) yang diberikan :
+
+```
+<?php
+// 1. **Pemanggilan `require_once`**:
+require_once dirname( __FILE__ ) . '/includes/class-shortcodes-ultimate-activator.php';
+require_once dirname( __FILE__ ) . '/includes/class-shortcodes-ultimate.php';
+// 2. **Pendaftaran `register_activation_hook`**:
+register_activation_hook( SU_PLUGIN_FILE, array( 'Shortcodes_Ultimate_Activator', 'activate' ) );
+3. **Panggilan `call_user_func`**: 
+call_user_func( function () {
+    // don't run the plugin during activation (after plugins_loaded)
+    if ( did_action( 'plugins_loaded' ) ) {
+        return;
+    }
+// 4. **Inisialisasi Plugin**: 
+    $plugin = new Shortcodes_Ultimate( SU_PLUGIN_FILE, SU_PLUGIN_VERSION, 'shortcodes-ultimate-' );
+// 5. **Pemanggilan Hook 'su/ready'**: 
+    do_action( 'su/ready', $plugin );
+} );
+
+```
